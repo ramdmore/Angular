@@ -1,0 +1,17 @@
+<p class="ml-4">Hello from fifth component</p>
+<!-- <ng-content></ng-content> -->
+<!-- Content Projection -->
+<div class="card ml-4" style="width: 18rem">
+  <div class="red-body">
+    <h5 class="card-title">
+      <ng-content select=".my-title"></ng-content>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <ng-content select="[ram]"></ng-content>
+    </h6>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content
+    </p>
+  </div>
+</div>

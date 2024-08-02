@@ -1,0 +1,10 @@
+<p>Hello from like</p>
+<i
+  class="fa"
+  [ngClass]="{
+    'fa-thumbs-o-up': !liked,
+    'fa-thumbs up': liked
+  }"
+  aria-hidden="true"
+  (click)="toggleLiked()"
+></i>

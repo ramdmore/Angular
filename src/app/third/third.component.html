@@ -1,0 +1,148 @@
+<h1>Hello from third Component</h1>
+
+<!--? Data Binding -->
+
+<!-- 1. Property Binding --one-way data binding from component's to view-->
+<p [innerText]="myHeading"></p>
+<p [innerHTML]="myHeading"></p>
+<p [textContent]="myHeading"></p>
+
+<!-- <img [src]="myImgSrc" />
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      // td will devide in two column
+      <td [attr.colspan]="myColspan"></td>
+    </tr>
+  </tbody>
+</table>
+
+//or
+<hr />
+// jevha dom banala tevha ram navachi property kadhi savech nahi zali tyamule
+aapan attr attribute use karato
+<p [attr.ram]="myHeading"></p>
+
+<hr />
+-->
+
+<!-- 2. String Interpolation -- one-way data binding from component's to view -->
+<p>{{ myHeading }}</p>
+
+<p>{{ myHeading + 2 + 2 }}</p>
+<p>{{ 2 + 2 }}</p>
+
+<hr />
+<p>{{ getMyHeading() }}</p>
+
+<!-- 3.Event Binding one-way data binding from view to comonent's -->
+
+<!-- when we come with the keyup event then it automatically call the input1Changed() -->
+<input placeholder="myInput-1" type="text" (keyup)="input1Changed()" />
+
+<!-- In which every key pressing each time the function is calling thats why it gettting slow as compared to the below method -->
+<input placeholder="myInput-2" type="text" (keyup)="input2Changed($event)" />
+
+<!-- this is more efficient than above method -->
+<input
+  placeholder="myInput-3"
+  type="text"
+  (keyup.enter)="input3Changed($event)"
+/>
+
+<input
+  placeholder="myInput-4"
+  type="text"
+  (keyup)="input4Changed(myInput)"
+  #myInput
+/>
+
+<input
+  placeholder="myInput-5"
+  type="text"
+  (keyup.enter)="input5Changed()"
+  #myInput5
+/>
+
+<input
+  placeholder="myInput-6"
+  type="text"
+  (keyup)="input6Changed($event)"
+  #myInput5
+/>
+
+<!-- <p>{{ myInp6Value }}</p> -->
+
+<!-- 4. Two way data binding -->
+<input type="text" [(ngModel)]="myInp7Value" />
+<p>{{ myInp7Value }}</p>
+
+<!-- Directives -->
+<!-- For increasing the HTML elements functionality -->
+
+<ul>
+  <li>{{ studentList[0] }}</li>
+  <li>{{ studentList[1] }}</li>
+  <li>{{ studentList[2] }}</li>
+</ul>
+
+<!-- 1. Structural Directive -->
+<!-- Structural directive will change the structure of HTML element -->
+<ul>
+  <li *ngFor="let std of studentList">{{ std }}</li>
+</ul>
+
+<!-- for(let i = 0; i<studentList.length; i++){
+  console.log(studentList[i]);
+} -->
+
+<ul>
+  <li *ngFor="let car of carList">
+    My Fovourite car is from {{ car.brandName }} and the model I like is
+    {{ car.model }} with {{ car.color }} color & its a type of {{ car.type }}
+  </li>
+</ul>
+
+<button *ngIf="isElegible">Apply for Visa</button>
+
+<ul *ngIf="studentList.length; else elsePart">
+  <li *ngFor="let std of studentList">{{ std }}</li>
+</ul>
+
+<ng-template #elsePart>
+  <p>There are no students joined yet!!</p>
+</ng-template>
+
+<!-- 2. Attribute Directive -->
+<!-- Atrribute directive will change the HTML elements attribute -->
+
+<h4 [ngStyle]="{ backgroundColor: 'red' }">Emmet 32</h4>
+<h4 [ngStyle]="{ backgroundColor: 'yellow' }">Emmet 32</h4>
+<h4 [ngClass]="{ myheading: true }">Emmet 32</h4>
+
+<!--3. custom directive -->
+<input placeholder="text uppercase" type="text" textUppercase />
+<br />
+<hr />
+<textarea placeholder="text uppercase" textUppercase></textarea>
+<br />
+<hr />
+<input placeholder="phone format" type="text" phoneFormat maxlength="10" />
+
+<!-- PIPE -->
+<p>{{ myGraphicCard.name | lowercase }}</p>
+<p>{{ myGraphicCard.cudaCores | number }}</p>
+<p>{{ myGraphicCard.boostClock | number : "2.1-4" }}</p>
+<p>{{ myGraphicCard.price | currency : "Rs" | lowercase }}</p>
+<p>{{ myGraphicCard.realeaseDate | date : "long" }}</p>
+<p>{{ myGraphicCard | json }}</p>
+
+<!-- CUSTOM PIPE -->
+<p>{{ myGraphicCard.description | descCutter : "100" }}</p>
